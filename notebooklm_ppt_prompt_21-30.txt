@@ -1,0 +1,310 @@
+你現在要協助我製作一份深度強化學習課程的 Final Project Proposal 簡報，本次只產生整份 30 頁簡報中的第 21 到第 30 頁。
+
+主題為：
+
+Deep Reinforcement Learning for Adaptive Urban Traffic Signal Control
+應用深度強化學習於都市交通號誌動態控制
+
+請注意：本次產出的第 21 到第 30 頁是完整 30 頁簡報的第三部分，不是一份獨立簡報。請延續第 1 到第 20 頁的風格與邏輯。前面已經完成 Introduction、Related Work，以及 Proposed Scheme 中的 System Architecture、MDP、State、Action、Reward、Policy 設計。
+
+整份簡報固定分為五個章節：
+
+1. Introduction
+2. Related Work
+3. Proposed Scheme
+4. Detail Implementation
+5. Conclusion
+
+本次只產生：
+
+Chapter 4: Detail Implementation｜Slide 21–27
+Chapter 5: Conclusion｜Slide 28–30
+
+請務必遵守以下簡報風格：
+
+- 整體風格為現代科技感、學術研究型簡報
+- 主色調使用深藍、藍色、青色、灰白色
+- 避免使用過多顏色
+- 每頁只呈現一個核心訊息
+- 避免大段文字，改用精簡 bullet points、圖表、流程圖、架構圖、對照表
+- Slide title 使用英文
+- 中文標題與主要說明使用繁體中文
+- 專有名詞可保留英文，例如 Deep Reinforcement Learning、MDP、State、Action、Reward、Policy、SUMO、PPO、DQN、SUMO-RL、Stable-Baselines3
+- 不要改成商業簡報或產品簡報語氣
+- 不要新增不必要的新章節
+- 不要重複第 1 到第 20 頁已經說明過的內容
+- 不要產生第 31 頁或其他額外頁面
+
+每一頁請使用以下格式輸出：
+
+Slide X. [English Slide Title]
+中文標題：
+章節：
+主要內容：
+Key Message：
+建議版面配置：
+建議視覺元素：
+講者備註：
+
+以下是本次需要產生的第 21 到第 30 頁內容：
+
+==================================================
+Chapter 4: Detail Implementation｜Slide 21 - 27
+==================================================
+
+Slide 21. Deep Reinforcement Learning Algorithms
+
+中文標題：
+深度強化學習演算法
+
+主要內容：
+本專案將實作並比較兩種主流 Deep RL 演算法：
+1. Deep Q-Network (DQN)
+   - Value-based method
+   - 學習 Q(s,a)
+   - 適合離散動作空間
+2. Proximal Policy Optimization (PPO)
+   - Policy-based / Actor-Critic method
+   - 直接優化策略
+   - 訓練穩定，適合複雜環境
+
+Key Message：
+透過 Value-based 與 Policy-based 演算法對比，找出最適合交通號誌控制的模型。
+
+建議版面配置：
+左右對比 DQN 與 PPO。
+
+建議視覺元素：
+DQN Q-value 圖、PPO Actor-Critic 圖。
+
+--------------------------------------------------
+
+Slide 22. DQN: Deep Q-Network as Baseline
+
+中文標題：
+DQN 作為基準模型
+
+主要內容：
+- DQN 利用神經網路取代傳統 Q-Table，處理高維度 State 空間。
+- 輸出每個離散 Action 的 Q-value。
+- 在本研究中作為 Baseline，用於驗證單一路口基本號誌切換能力。
+- 限制：面對多路口或連續動作空間時，容易面臨維度災難與收斂問題。
+
+Key Message：
+DQN 簡單且具備高度解釋性，是驗證 RL 應用於號誌控制的絕佳起點。
+
+建議版面配置：
+呈現 DQN 架構：State input → Neural Network → Q-values → Action selection。
+
+建議視覺元素：
+Experience Replay、Target Network、Q(s,a)。
+
+--------------------------------------------------
+
+Slide 23. PPO: Proximal Policy Optimization
+
+中文標題：
+PPO 主力演算法
+
+主要內容：
+- PPO 透過限制每次策略更新幅度，確保訓練穩定性。
+- 屬於 Actor-Critic 架構。
+- Actor 負責輸出策略，Critic 負責評估狀態價值。
+- 本研究將 PPO 作為主要演算法，原因是其在複雜動態環境下具有較佳穩定性與適應力。
+
+Key Message：
+PPO 在穩定性與複雜環境適應性上的優勢，使其成為動態交通號誌控制的核心方法。
+
+建議版面配置：
+左側放 PPO 概念，右側放 Actor-Critic 架構圖。
+
+建議視覺元素：
+PPO Clip objective、穩定更新示意圖、Actor-Critic 圖。
+
+--------------------------------------------------
+
+Slide 24. Simulation Environment: SUMO
+
+中文標題：
+模擬環境：SUMO
+
+主要內容：
+- SUMO 是 Simulation of Urban Mobility 的縮寫。
+- 它是一套開源、微觀、連續的交通模擬平台。
+- 可模擬車輛跟車、變換車道、行人穿越與多種交通情境。
+- 本研究將在 SUMO 中建立路口模型、生成車流需求，並收集停等時間、排隊長度、旅行時間與排放資料。
+
+Key Message：
+SUMO 提供高擬真度沙盒環境，讓 Agent 能在無安全風險下進行大量試錯學習。
+
+建議版面配置：
+左側說明 SUMO 功能，右側放 SUMO 路口模擬畫面。
+
+建議視覺元素：
+SUMO 軟體截圖、路口車流微觀模擬圖。
+
+--------------------------------------------------
+
+Slide 25. Toolchain: SUMO-RL Framework
+
+中文標題：
+技術工具鏈：SUMO-RL
+
+主要內容：
+- SUMO-RL 是將 SUMO 封裝為 Reinforcement Learning 環境的開源工具。
+- 支援標準 Gymnasium 介面。
+- 可橋接 Python 生態系。
+- 可搭配 Stable-Baselines3 或 RLlib 進行模型訓練。
+- 技術堆疊：
+  SUMO → SUMO-RL → Gymnasium → Stable-Baselines3 → DQN / PPO
+
+Key Message：
+透過 SUMO-RL，我們能將交通工程模擬器標準化為 AI 訓練環境。
+
+建議版面配置：
+用垂直或水平 Tech Stack 圖呈現工具鏈。
+
+建議視覺元素：
+SUMO、SUMO-RL、Gymnasium、Stable-Baselines3、Python icons。
+
+--------------------------------------------------
+
+Slide 26. Experimental Scenarios Design
+
+中文標題：
+實驗場景設計
+
+主要內容：
+為確保模型具備泛化能力，本研究設計以下壓力測試場景：
+
+場景 A：單一標準路口
+- 測試基本收斂能力與號誌切換策略。
+
+場景 B：主幹道與支道流量極端不均
+- 測試公平性、避免空等與支道長時間等待問題。
+
+場景 C：尖離峰動態變化
+- 模擬早晚尖峰與離峰交替，測試模型即時適應力。
+
+Key Message：
+涵蓋極端與動態變化的模擬場景，能驗證演算法面對真實世界複雜性的能力。
+
+建議版面配置：
+三欄式卡片，分別呈現 Scenario A、B、C。
+
+建議視覺元素：
+十字路口圖、主次幹道流量圖、尖離峰波形圖。
+
+--------------------------------------------------
+
+Slide 27. Evaluation Metrics & Baselines
+
+中文標題：
+評估指標與基準方法
+
+主要內容：
+Baseline methods：
+- Fixed-Time Control
+- Actuated Control
+- Random Policy
+- DQN
+
+Evaluation Metrics：
+效率指標：
+- Average Waiting Time
+- Queue Length
+- Throughput
+
+環境指標：
+- CO2 Emissions
+
+演算法指標：
+- Convergence Speed
+- Cumulative Reward
+
+Key Message：
+透過多維度評估，不僅證明效率提升，也檢驗減碳效益與演算法穩健性。
+
+建議版面配置：
+左側放 Baseline 列表，右側放 Evaluation Metrics 分類表。
+
+建議視覺元素：
+Radar Chart、指標儀表板、Baseline comparison table。
+
+==================================================
+Chapter 5: Conclusion｜Slide 28 - 30
+==================================================
+
+Slide 28. Expected Contributions
+
+中文標題：
+預期貢獻
+
+主要內容：
+- 方法創新：將都市號誌控制轉化為 MDP，提出具備交通感知的 State 與 Joint Reward 設計。
+- 效能突破：預期 PPO 在減少等待時間與排隊長度上，優於固定時制與感應式控制。
+- 永續發展：透過降低怠速與車流延滯，減少都市運輸溫室氣體排放，呼應台灣低碳治理目標。
+
+Key Message：
+本研究建立了一個兼顧交通效率與環境永續的智慧化決策框架。
+
+建議版面配置：
+左側列出前面 Motivation 的問題，右側對應本研究的解法與貢獻。
+
+建議視覺元素：
+Problem-Solution 對照圖、綠色勾號、效率與永續 icon。
+
+--------------------------------------------------
+
+Slide 29. Limitations and Future Work
+
+中文標題：
+限制與未來研究
+
+主要內容：
+Limitations：
+- Sim-to-Real 落差：SUMO 難以完全模擬真實世界中的違停、機車鑽車縫、行人違規等行為。
+- 單一路口侷限：目前專注於獨立路口，尚未完全解決上游放行導致下游壅塞的連鎖效應。
+
+Future Work：
+- 引入 Multi-Agent Reinforcement Learning 處理多路口協調與綠波設計。
+- 將環境遷移至 CityFlow 等大規模城市路網模擬器進行壓力測試。
+
+Key Message：
+本研究雖從單一路口出發，但可擴展至多路口智慧路網全域控制。
+
+建議版面配置：
+左側 Limitations，右側 Future Work。
+
+建議視覺元素：
+從單一路口擴展到大型城市路網的漸進圖。
+
+--------------------------------------------------
+
+Slide 30. Final Summary
+
+中文標題：
+總結
+
+主要內容：
+請置中放置以下核心主軸句：
+
+This project proposes a Deep Reinforcement Learning-based adaptive traffic signal control framework that formulates urban intersection management as a Markov Decision Process, allowing an intelligent agent to learn signal control policies that reduce waiting time, queue length, travel delay, and environmental impact under dynamic traffic conditions.
+
+下方放：
+Thank You for Listening!
+Q&A
+
+Key Message：
+深度強化學習將重新定義都市交通的控制大腦。
+
+建議版面配置：
+核心主軸句置中，大字呈現；底部放 Thank You 與 Q&A。
+
+建議視覺元素：
+深色智慧城市背景、光流路網、AI 控制中心意象。
+
+請只產生 Slide 21 到 Slide 30。
+請不要產生 Slide 1 到 Slide 20。
+請不要產生 Slide 31 或任何額外頁面。
+請將本批次視為完整 30 頁簡報的第三段，必須延續前兩段的學術科技感風格。

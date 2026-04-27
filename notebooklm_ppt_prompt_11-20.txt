@@ -1,0 +1,314 @@
+你現在要協助我製作一份深度強化學習課程的 Final Project Proposal 簡報，本次只產生整份 30 頁簡報中的第 11 到第 20 頁。
+
+主題為：
+
+Deep Reinforcement Learning for Adaptive Urban Traffic Signal Control
+應用深度強化學習於都市交通號誌動態控制
+
+請注意：本次產出的第 11 到第 20 頁是完整 30 頁簡報的第二部分，不是一份獨立簡報。請延續第 1 到第 10 頁的風格與邏輯。前面已經完成 Introduction，以及 Related Work 中的 Overview、Fixed-Time Signal Control、Actuated Signal Control。
+
+整份簡報固定分為五個章節：
+
+1. Introduction
+2. Related Work
+3. Proposed Scheme
+4. Detail Implementation
+5. Conclusion
+
+本次只產生：
+
+Chapter 2: Related Work｜Slide 11–13 的後半段
+Chapter 3: Proposed Scheme｜Slide 14–20
+
+請務必遵守以下簡報風格：
+
+- 整體風格為現代科技感、學術研究型簡報
+- 主色調使用深藍、藍色、青色、灰白色
+- 避免使用過多顏色
+- 每頁只呈現一個核心訊息
+- 避免大段文字，改用精簡 bullet points、圖表、流程圖、架構圖、對照表
+- Slide title 使用英文
+- 中文標題與主要說明使用繁體中文
+- 專有名詞可保留英文，例如 Deep Reinforcement Learning、MDP、State、Action、Reward、Policy、SUMO、PPO、DQN
+- 不要改成商業簡報或產品簡報語氣
+- 不要新增不必要的新章節
+- 不要重複第 1 到第 10 頁已經說明過的 Introduction 內容
+- 不要產生第 21 頁之後的內容
+
+每一頁請使用以下格式輸出：
+
+Slide X. [English Slide Title]
+中文標題：
+章節：
+主要內容：
+Key Message：
+建議版面配置：
+建議視覺元素：
+講者備註：
+
+以下是本次需要產生的第 11 到第 20 頁內容：
+
+==================================================
+Chapter 2: Related Work｜Slide 11 - 13
+==================================================
+
+Slide 11. Limitation of Adaptive Signal Control
+
+中文標題：
+自適應號誌控制的限制
+
+主要內容：
+- 運作機制：根據即時車流資料，動態調整號誌週期、綠燈秒數與相位順序。
+- 優點：在台灣已展現縮短旅行時間的實務效益。
+- 缺點：多數仍依賴交通工程師設計的啟發式最佳化規則。
+- 面對高度非線性、多路口交互影響的複雜交通狀態時，適應能力仍受限。
+
+Key Message：
+傳統自適應系統的極限在於人為設計規則的邊界。
+
+建議版面配置：
+左側呈現自適應控制流程，右側呈現其限制：Heuristic、Nonlinear、Scalability。
+
+建議視覺元素：
+最佳化公式、限制框、複雜路網圖。
+
+--------------------------------------------------
+
+Slide 12. Emergence of Reinforcement Learning-Based Control
+
+中文標題：
+強化學習式號誌控制的興起
+
+主要內容：
+- 將號誌控制視為 Agent 與 Environment 的互動問題。
+- Agent 觀察 State、採取 Action，並從環境獲得 Reward。
+- 透過反覆試錯學習最佳策略。
+- 優勢是突破人為規則限制，能自主學習長期最佳化策略。
+
+Key Message：
+RL 透過獎勵機制的引導，能學會在複雜環境中動態調配路權。
+
+建議版面配置：
+以 RL 循環圖作為主視覺。
+
+建議視覺元素：
+Agent → Action → Environment → State/Reward → Agent 循環圖。
+
+--------------------------------------------------
+
+Slide 13. Comparative Analysis of Signal Control Technologies
+
+中文標題：
+號誌控制技術比較分析
+
+主要內容：
+請製作一張比較表，欄位包含：
+- Fixed-Time
+- Actuated
+- Adaptive
+- RL-Based / Ours
+
+比較維度包含：
+- Dynamic Adaptability
+- Long-term Optimization
+- Dependency on Human Rules
+- Scalability
+- Data-driven Learning
+- Ability to Handle Complex Traffic Patterns
+
+重點：
+- Fixed-Time：低運算需求、無動態適應力、無長期最佳化。
+- Actuated：依賴硬體偵測、局部反應、規則限制。
+- Adaptive：具備動態適應力，但依賴專家知識與啟發式規則。
+- RL-Based：具備深度特徵擷取能力、資料驅動能力與長期全局最佳化能力。
+
+Key Message：
+DRL 演算法在動態適應與長期最佳化指標上，具備超越傳統技術的潛力。
+
+建議版面配置：
+使用 Feature Comparison Table，以勾號、叉號、星等或色塊比較四種方法。
+
+建議視覺元素：
+比較表、診斷儀表板、科技感 icon。
+
+==================================================
+Chapter 3: Proposed Scheme｜Slide 14 - 20
+==================================================
+
+Slide 14. System Architecture Overview
+
+中文標題：
+系統架構總覽
+
+主要內容：
+本研究提出一套整合式 DRL 交通號誌控制架構，包含五大核心模組：
+1. Traffic Simulation Environment (SUMO)
+2. State Extraction Module
+3. Deep Reinforcement Learning Agent
+4. Signal Control Module
+5. Reward Evaluation Module
+
+Key Message：
+系統架構形成一個閉環控制系統，使 Agent 能從交通環境中持續學習與優化。
+
+建議版面配置：
+使用 Block Diagram 呈現五大模組與資料流向。
+
+建議視覺元素：
+SUMO → State Extraction → DRL Agent → Signal Control → Reward Evaluation → SUMO 的閉環架構圖。
+
+--------------------------------------------------
+
+Slide 15. Markov Decision Process (MDP) Formulation
+
+中文標題：
+Markov Decision Process 建模
+
+主要內容：
+- 要讓 AI 學習控制紅綠燈，必須先將都市交通號誌控制建模為 Markov Decision Process。
+- MDP 定義了智慧體如何在不確定環境中進行序列決策。
+- 系統以 time-step t 推進，不斷在 S_t、A_t、R_t、S_{t+1} 之間循環。
+- MDP 可表示為 <S, A, P, R, γ>。
+
+Key Message：
+MDP 是將實體交通問題轉換為數學最佳化問題的核心橋樑。
+
+建議版面配置：
+左側列出 MDP 數學表示法，右側對應交通情境中的 State、Action、Reward、Transition、Policy。
+
+建議視覺元素：
+MDP 循環圖、數學符號與路口元素對應圖。
+
+--------------------------------------------------
+
+Slide 16. MDP Elements: Agent & Environment
+
+中文標題：
+MDP 元素：Agent 與 Environment
+
+主要內容：
+- Agent：Traffic Signal Controller，負責觀察交通狀態並決定號誌控制動作。
+- Environment：Urban intersection or road network，負責根據 Agent 動作更新交通狀態並回傳獎勵。
+- Agent 的目標是最大化長期累積獎勵。
+- Environment 模擬真實世界中車流、路口與號誌互動。
+
+Key Message：
+Agent 與 Environment 的互動模擬了真實世界中號誌機與車流的博弈。
+
+建議版面配置：
+使用雙向互動圖，左邊是 Agent，右邊是 Environment。
+
+建議視覺元素：
+AI 大腦圖示、路口模擬圖示、雙向箭頭。
+
+--------------------------------------------------
+
+Slide 17. State Representation (S)
+
+中文標題：
+狀態表示設計
+
+主要內容：
+State Vector 代表路口的即時交通特徵，本研究狀態設計包含：
+- 各車道排隊長度 Queue length
+- 車輛平均等待時間 Waiting time
+- 目前號誌相位 Current signal phase
+- 剩餘綠燈時間 Remaining green time
+- 車輛平均速度 Vehicle speed
+
+設計理念：
+提供 Agent 足夠的即時交通特徵，使其能理解目前車流狀態並預判擁塞趨勢。
+
+Key Message：
+精準的 State 設計能讓 Agent 看見車流的現在，並預測下一步交通壅塞風險。
+
+建議版面配置：
+路口平面圖上標示各特徵擷取位置，旁邊列出 State Vector。
+
+建議視覺元素：
+Queue length 標籤、Speed 標籤、State Vector 矩陣示意。
+
+--------------------------------------------------
+
+Slide 18. Action Space Design (A)
+
+中文標題：
+動作空間設計
+
+主要內容：
+Action Space 定義 Agent 可以對號誌進行的控制指令。
+
+本專案初期採用 Discrete Action Space：
+- 選擇下一個號誌相位 Next signal phase
+- 延長當前綠燈 Extend current green phase
+- 切換至南北向綠燈
+- 切換至東西向綠燈
+
+採用離散動作的原因：
+- 易於訓練與收斂
+- 適合 DQN 與 PPO 的初步實驗
+- 可快速驗證演算法有效性
+
+Key Message：
+離散動作空間能有效降低運算複雜度，同時滿足多相位動態切換需求。
+
+建議版面配置：
+展示四相位路口圖示，將 Action 表示為 a ∈ {0,1,2,3}。
+
+建議視覺元素：
+四相位號誌圖、Action selection 圖示。
+
+--------------------------------------------------
+
+Slide 19. Reward Function Design (R)
+
+中文標題：
+獎勵函數設計
+
+主要內容：
+Reward 是引導 Agent 行為的最重要指標。
+
+若僅看通過車輛數，Agent 可能偏袒主幹道並犧牲支道公平性。因此，本研究採用 Joint Reward Function，最小化以下負向指標：
+- 平均等待時間 Average waiting time
+- 排隊長度 Queue length
+- 路口延滯 Travel delay
+- 環境碳排 Emissions
+
+範例公式：
+R_t = - (w_1 × Queue + w_2 × Delay + w_3 × Emission)
+
+Key Message：
+綜合獎勵函數確保整體路網的效率、公平性與環境永續。
+
+建議版面配置：
+中央放 Reward 公式，下方用四個 icon 分別代表 waiting、queue、delay、emissions。
+
+建議視覺元素：
+Reward formula、權重圖示、效率與公平性的平衡圖。
+
+--------------------------------------------------
+
+Slide 20. Policy Formulation (π)
+
+中文標題：
+策略函數設計
+
+主要內容：
+- Policy 是從交通狀態到號誌控制動作的映射關係：π(a|s)。
+- Agent 透過 Deep Neural Networks 逼近最佳策略 π*。
+- 訓練目標是最大化期望長期累積折扣獎勵。
+- 訓練完成後，Policy 即可根據即時交通狀態輸出號誌控制策略。
+
+Key Message：
+訓練完成的 Policy 就是一個能適應車流變化的智慧交通號誌決策模型。
+
+建議版面配置：
+用神經網路圖表示 State input、Hidden layers、Action probabilities output。
+
+建議視覺元素：
+Policy Network、π(a|s)、Deep Neural Network 架構圖。
+
+請只產生 Slide 11 到 Slide 20。
+請不要產生 Slide 1 到 Slide 10。
+請不要產生 Slide 21 之後的內容。
+請將本批次視為完整 30 頁簡報的第二段，必須延續前一段的學術科技感風格。
